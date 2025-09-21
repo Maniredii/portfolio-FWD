@@ -720,6 +720,8 @@ body {
     overflow: hidden;
     box-shadow: var(--shadow-light);
     transition: all 0.3s ease;
+    opacity: 1;
+    display: block;
 }
 
 .project-card:hover {

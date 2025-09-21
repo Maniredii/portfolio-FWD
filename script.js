@@ -9,8 +9,19 @@ const mobileMenu = document.getElementById('mobile-menu');
 const navMenu = document.getElementById('nav-menu');
 const contactForm = document.getElementById('contact-form');
 
+// Ensure projects are visible by default
+function ensureProjectsVisible() {
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.display = 'block';
+        card.style.transform = 'translateY(0)';
+    });
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    ensureProjectsVisible(); // Ensure projects are visible first
     initializeAnimations();
     initializeScrollMagic();
     initializeNavigation();
@@ -165,7 +176,15 @@ function initializeScrollMagic() {
         reverse: false
     })
     .setTween(projectsTl)
-    .addTo(controller);
+    .addTo(controller)
+    .on('enter', function() {
+        // Fallback: ensure all projects are visible
+        const allProjects = document.querySelectorAll('.project-card');
+        allProjects.forEach(card => {
+            card.style.display = 'block';
+            card.style.opacity = '1';
+        });
+    });
 
     // Contact section animation
     const contactTl = gsap.timeline()
@@ -385,6 +404,13 @@ function initializeSkillInteractions() {
 function initializeProjectFiltering() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
+    
+    // Ensure all projects are visible initially
+    projectCards.forEach(card => {
+        card.style.display = 'block';
+        card.style.opacity = '1';
+        card.style.transform = 'scale(1)';
+    });
     
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
