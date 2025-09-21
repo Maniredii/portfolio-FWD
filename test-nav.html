@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .nav-test { background: #f0f0f0; padding: 20px; margin: 20px 0; }
+        .nav-test a { margin-right: 15px; color: #6366f1; text-decoration: none; }
+        .section { height: 100vh; padding: 50px; margin: 20px 0; border: 2px solid #ddd; }
+    </style>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+</head>
+<body>
+    <div class="nav-test">
+        <h2>Navigation Test</h2>
+        <a href="#section1" class="nav-link">Section 1</a>
+        <a href="#section2" class="nav-link">Section 2</a>
+        <a href="#section3" class="nav-link">Section 3</a>
+    </div>
+
+    <div id="section1" class="section">
+        <h1>Section 1</h1>
+        <p>This is section 1 content.</p>
+    </div>
+
+    <div id="section2" class="section">
+        <h1>Section 2</h1>
+        <p>This is section 2 content.</p>
+    </div>
+
+    <div id="section3" class="section">
+        <h1>Section 3</h1>
+        <p>This is section 3 content.</p>
+    </div>
+
+    <script>
+        // Register ScrollToPlugin
+        gsap.registerPlugin(ScrollToPlugin);
+        
+        // Test navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded - Testing navigation');
+            console.log('GSAP available:', !!window.gsap);
+            console.log('ScrollToPlugin available:', !!gsap.plugins.ScrollToPlugin);
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            console.log('Found nav links:', navLinks.length);
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    console.log('Clicked:', targetId, 'Found target:', !!targetSection);
+                    
+                    if (targetSection) {
+                        const targetPosition = targetSection.offsetTop - 20;
+                        console.log('Scrolling to:', targetPosition);
+                        
+                        try {
+                            if (gsap.plugins.ScrollToPlugin) {
+                                console.log('Using GSAP ScrollTo');
+                                gsap.to(window, {
+                                    duration: 1,
+                                    scrollTo: { y: targetPosition },
+                                    ease: "power2.inOut"
+                                });
+                            } else {
+                                console.log('Using native scroll');
+                                window.scrollTo({
+                                    top: targetPosition,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        } catch (error) {
+                            console.error('Scroll error:', error);
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

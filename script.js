@@ -21,10 +21,17 @@ function ensureProjectsVisible() {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - Initializing portfolio');
     ensureProjectsVisible(); // Ensure projects are visible first
     initializeAnimations();
     initializeScrollMagic();
-    initializeNavigation();
+    
+    // Initialize navigation with a slight delay to ensure GSAP is ready
+    setTimeout(() => {
+        initializeNavigation();
+        console.log('Navigation initialized');
+    }, 100);
+    
     initializeSkillBars();
     initializeSkillInteractions();
     initializeProjectFiltering();
@@ -36,6 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
 // Loading Screen Animation
 function handleLoading() {
     window.addEventListener('load', function() {
+        console.log('Window fully loaded');
+        
+        // Ensure navigation is working
+        if (document.querySelectorAll('.nav-link').length === 0) {
+            console.warn('Re-initializing navigation due to missing links');
+            setTimeout(() => initializeNavigation(), 200);
+        }
+        
         setTimeout(() => {
             gsap.to(loadingScreen, {
                 opacity: 0,
@@ -53,8 +68,8 @@ function handleLoading() {
 
 // Initialize GSAP animations
 function initializeAnimations() {
-    // Register ScrollTrigger plugin
-    gsap.registerPlugin(ScrollTrigger);
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     
     // Set initial states for animations
     gsap.set(['.hero-text', '.hero-image'], { opacity: 0, y: 50 });
@@ -243,8 +258,21 @@ function initializeScrollMagic() {
 
 // Navigation functionality
 function initializeNavigation() {
+    console.log('Initializing navigation...');
+    console.log('GSAP available:', !!window.gsap);
+    console.log('ScrollToPlugin available:', !!gsap.plugins?.ScrollToPlugin);
+    
+    // Check if elements exist before adding event listeners
+    if (!mobileMenu || !navMenu) {
+        console.warn('Navigation elements not found:', { mobileMenu: !!mobileMenu, navMenu: !!navMenu });
+        return;
+    }
+    
+    console.log('Mobile menu and nav menu found successfully');
+
     // Mobile menu toggle
     mobileMenu.addEventListener('click', function() {
+        console.log('Mobile menu clicked');
         navMenu.classList.toggle('active');
         
         // Animate hamburger bars
@@ -262,11 +290,15 @@ function initializeNavigation() {
 
     // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('.nav-link');
+    console.log('Found navigation links:', navLinks.length);
+    
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
+            
+            console.log('Navigation clicked:', targetId, 'Target found:', !!targetSection);
             
             if (targetSection) {
                 // Close mobile menu if open
@@ -278,25 +310,52 @@ function initializeNavigation() {
                 gsap.to(bars[1], { opacity: 1, duration: 0.3 });
                 gsap.to(bars[2], { rotation: 0, y: 0, duration: 0.3 });
                 
-                // Smooth scroll
-                gsap.to(window, {
-                    duration: 1,
-                    scrollTo: {
-                        y: targetSection,
-                        offsetY: 70
-                    },
-                    ease: "power2.inOut"
-                });
+                // Calculate target position
+                const targetPosition = targetSection.offsetTop - 70; // 70px offset for fixed navbar
+                console.log('Scrolling to position:', targetPosition);
+                
+                // Try GSAP scroll first, fallback to native scroll
+                try {
+                    if (window.gsap && gsap.to && gsap.plugins.ScrollToPlugin) {
+                        console.log('Using GSAP ScrollTo');
+                        gsap.to(window, {
+                            duration: 1,
+                            scrollTo: {
+                                y: targetPosition,
+                                autoKill: false
+                            },
+                            ease: "power2.inOut"
+                        });
+                    } else {
+                        console.log('GSAP ScrollTo not available, using native scroll');
+                        // Fallback to smooth native scroll
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                } catch (error) {
+                    console.warn('GSAP scroll failed, using fallback:', error);
+                    // Fallback to smooth native scroll
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            } else {
+                console.warn('Target section not found:', targetId);
             }
         });
     });
 
     // Navbar background on scroll
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        if (navbar) {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         }
     });
 
@@ -605,11 +664,25 @@ function addScrollToTop() {
     `;
     
     scrollBtn.addEventListener('click', function() {
-        gsap.to(window, {
-            duration: 1,
-            scrollTo: { y: 0 },
-            ease: "power2.inOut"
-        });
+        try {
+            if (window.gsap && gsap.to && gsap.plugins.ScrollToPlugin) {
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: { y: 0 },
+                    ease: "power2.inOut"
+                });
+            } else {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        } catch (error) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
     });
     
     document.body.appendChild(scrollBtn);
