@@ -3,36 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI/ML Engineer Portfolio | Machine Learning & Data Science</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Your Name - AI/ML Engineer Portfolio</title>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- ScrollMagic -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="loader-inner"></div>
+            <div class="loader-text">Loading Portfolio...</div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">Portfolio</span>
+                <a href="#home">Portfolio</a>
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
-                    <a href="#home" class="nav-link" data-section="home">Home</a>
+                    <a href="#home" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#about" class="nav-link" data-section="about">About</a>
+                    <a href="#about" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                    <a href="#skills" class="nav-link">Skills</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                    <a href="#projects" class="nav-link">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+                    <a href="#contact" class="nav-link">Contact</a>
                 </li>
             </ul>
-            <div class="hamburger" id="hamburger">
+            <div class="nav-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -42,32 +65,59 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="hero-greeting">Hello, I'm</span>
-                    <span class="hero-name">AI/ML Engineer</span>
-                </h1>
-                <p class="hero-subtitle">Machine Learning Engineer & Data Scientist</p>
-                <p class="hero-description">
-                    I build intelligent systems that learn, adapt, and solve complex problems.
-                    From computer vision to NLP, I transform data into actionable insights
-                    and deploy scalable AI solutions.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="hero-avatar">
-                    <img src="https://via.placeholder.com/300x300/4F46E5/ffffff?text=JD" alt="Profile Picture">
-                </div>
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <span>Scroll Down</span>
-            <i class="fas fa-chevron-down"></i>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="hero-greeting">Hello, I'm</span>
+                        <span class="hero-name">Your Name</span>
+                        <span class="hero-role">AI/ML Engineer</span>
+                    </h1>
+                    <p class="hero-description">
+                        Passionate about creating intelligent solutions that solve real-world problems 
+                        through machine learning, computer vision, and natural language processing.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                    <div class="hero-social">
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-container">
+                        <img src="profile.jpg" alt="Your Name - AI/ML Engineer" class="profile-image">
+                        <div class="image-backdrop"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span class="scroll-text">Scroll to explore</span>
+            </div>
         </div>
     </section>
 
@@ -76,49 +126,43 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Get to know me better</p>
+                <p class="section-subtitle">Discover my journey in AI/ML engineering</p>
             </div>
             <div class="about-content">
-                <div class="about-text">
-                    <h3>AI/ML Engineer & Full-Stack Developer</h3>
-                    <p>
-                        With over 3 years of experience in Artificial Intelligence and Machine Learning, 
-                        I specialize in developing intelligent systems and scalable web applications. 
-                        My expertise spans from building neural networks and deploying ML models to 
-                        creating seamless user experiences.
-                    </p>
-                    <p>
-                        <strong>Professional Experience:</strong><br>
-                        • Developed and deployed 15+ machine learning models for predictive analytics<br>
-                        • Built computer vision systems for image classification and object detection<br>
-                        • Implemented NLP solutions for sentiment analysis and text processing<br>
-                        • Created end-to-end ML pipelines using TensorFlow, PyTorch, and scikit-learn<br>
-                        • Designed RESTful APIs for ML model serving and real-time predictions
-                    </p>
-                    <p>
-                        I'm passionate about leveraging AI to solve real-world problems and believe in 
-                        the power of data-driven decision making. When I'm not training models, you can 
-                        find me exploring the latest research papers, contributing to open-source ML 
-                        projects, or mentoring aspiring data scientists.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number" data-count="35">0</span>
-                            <span class="stat-label">ML Models Deployed</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="3">0</span>
-                            <span class="stat-label">Years in AI/ML</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="92">0</span>
-                            <span class="stat-label">Accuracy Rate</span>
-                        </div>
+                <div class="about-image">
+                    <div class="about-image-container">
+                        <img src="profile.jpg" alt="About me" class="about-profile">
+                        <div class="about-decoration"></div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <div class="about-img-container">
-                        <img src="https://via.placeholder.com/400x500/6366F1/ffffff?text=About+Me" alt="About Me">
+                <div class="about-text">
+                    <p class="about-description">
+                        I'm a passionate AI/ML Engineer with expertise in Python, TensorFlow, PyTorch, and OpenCV. 
+                        My focus is on developing intelligent solutions for real-world applications in healthcare, 
+                        education, and assistive technologies.
+                    </p>
+                    <p class="about-description">
+                        With experience in FastAPI and Flask for building scalable ML applications, I enjoy 
+                        participating in hackathons, conducting research, and collaborating on projects that 
+                        create positive impact through AI solutions.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="15">0</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="5">0</div>
+                            <div class="stat-label">Hackathons Won</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="3">0</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                    <div class="about-buttons">
+                        <a href="#" class="btn btn-primary">Download CV</a>
+                        <a href="#contact" class="btn btn-outline">Hire Me</a>
                     </div>
                 </div>
             </div>
@@ -129,33 +173,33 @@
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">My Skills</h2>
-                <p class="section-subtitle">Technologies I work with</p>
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">My technical expertise in AI/ML and web development</p>
             </div>
             <div class="skills-content">
                 <div class="skills-categories">
                     <div class="skill-category">
-                        <div class="category-icon">
+                        <h3 class="category-title">
                             <i class="fas fa-brain"></i>
-                        </div>
-                        <h3>AI & Machine Learning</h3>
-                        <div class="skills-list">
+                            Machine Learning
+                        </h3>
+                        <div class="skill-list">
                             <div class="skill-item">
                                 <div class="skill-info">
                                     <span class="skill-name">Python</span>
                                     <span class="skill-percentage">95%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-width="95"></div>
+                                    <div class="skill-progress" data-width="95%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <span class="skill-name">TensorFlow/Keras</span>
+                                    <span class="skill-name">TensorFlow</span>
                                     <span class="skill-percentage">90%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90"></div>
+                                    <div class="skill-progress" data-width="90%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -164,106 +208,104 @@
                                     <span class="skill-percentage">85%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85"></div>
+                                    <div class="skill-progress" data-width="85%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <span class="skill-name">Scikit-Learn</span>
-                                    <span class="skill-percentage">88%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="88"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <div class="category-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3>Data Science & Analytics</h3>
-                        <div class="skills-list">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Pandas/NumPy</span>
-                                    <span class="skill-percentage">92%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="92"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Computer Vision</span>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">NLP</span>
+                                    <span class="skill-name">OpenCV</span>
                                     <span class="skill-percentage">80%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Deep Learning</span>
-                                    <span class="skill-percentage">87%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="87"></div>
+                                    <div class="skill-progress" data-width="80%"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="skill-category">
-                        <div class="category-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <h3>Cloud & DevOps</h3>
-                        <div class="skills-list">
+                        <h3 class="category-title">
+                            <i class="fas fa-code"></i>
+                            Web Development
+                        </h3>
+                        <div class="skill-list">
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <span class="skill-name">AWS/Azure</span>
+                                    <span class="skill-name">JavaScript</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">React</span>
                                     <span class="skill-percentage">82%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-width="82"></div>
+                                    <div class="skill-progress" data-width="82%"></div>
                                 </div>
                             </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">FastAPI</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Flask</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="category-title">
+                            <i class="fas fa-tools"></i>
+                            Tools & Platforms
+                        </h3>
+                        <div class="skill-list">
                             <div class="skill-item">
                                 <div class="skill-info">
                                     <span class="skill-name">Docker</span>
-                                    <span class="skill-percentage">78%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="78"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">MLOps</span>
                                     <span class="skill-percentage">75%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-width="75"></div>
+                                    <div class="skill-progress" data-width="75%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <span class="skill-name">Git/GitHub</span>
+                                    <span class="skill-name">AWS</span>
+                                    <span class="skill-percentage">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="70%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Git</span>
                                     <span class="skill-percentage">90%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90"></div>
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Jupyter</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
                                 </div>
                             </div>
                         </div>
@@ -277,116 +319,93 @@
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">My Projects</h2>
-                <p class="section-subtitle">Some of my recent work</p>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Innovative AI/ML solutions I've developed</p>
             </div>
             <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn active" data-filter="all">All Projects</button>
                 <button class="filter-btn" data-filter="ml">Machine Learning</button>
                 <button class="filter-btn" data-filter="cv">Computer Vision</button>
                 <button class="filter-btn" data-filter="nlp">NLP</button>
-                <button class="filter-btn" data-filter="web">Web Apps</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
             </div>
-            <div class="projects-grid">
-                <div class="project-card" data-category="ml">
+            <div class="projects-grid" id="projects-grid">
+                <div class="project-card" data-category="cv">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250/7C3AED/ffffff?text=Predictive+Analytics+Platform" alt="Predictive Analytics Platform">
+                        <img src="https://via.placeholder.com/400x300/6366f1/ffffff?text=Computer+Vision" alt="Medical Image Analysis">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" title="View Live">
+                                <a href="#" class="project-link" aria-label="View Project">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
-                                <a href="#" class="project-link" title="View Code">
+                                <a href="#" class="project-link" aria-label="View Code">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Predictive Analytics Platform</h3>
-                        <p>End-to-end ML pipeline for customer behavior prediction with 94% accuracy. Features automated data preprocessing, model training, and real-time inference API.</p>
+                    <div class="project-content">
+                        <h3 class="project-title">Medical Image Analysis</h3>
+                        <p class="project-description">
+                            AI-powered system for analyzing medical images using deep learning to assist in diagnosis.
+                        </p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">AWS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="cv">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250/059669/ffffff?text=Computer+Vision+System" alt="Computer Vision System">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Live">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link" title="View Code">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Object Detection System</h3>
-                        <p>Real-time object detection and tracking system using YOLO and OpenCV. Deployed for inventory management with 98% detection accuracy.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">PyTorch</span>
                             <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">YOLO</span>
-                            <span class="tech-tag">Flask</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card" data-category="nlp">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250/DC2626/ffffff?text=NLP+Sentiment+Analysis" alt="NLP Sentiment Analysis">
+                        <img src="https://via.placeholder.com/400x300/10b981/ffffff?text=NLP+Chatbot" alt="Intelligent Chatbot">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" title="View Live">
+                                <a href="#" class="project-link" aria-label="View Project">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
-                                <a href="#" class="project-link" title="View Code">
+                                <a href="#" class="project-link" aria-label="View Code">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Sentiment Analysis Engine</h3>
-                        <p>Advanced NLP system for social media sentiment analysis using transformer models. Processes 10K+ tweets per minute with real-time insights.</p>
+                    <div class="project-content">
+                        <h3 class="project-title">Intelligent Chatbot</h3>
+                        <p class="project-description">
+                            NLP-powered chatbot using BERT for understanding and generating human-like responses.
+                        </p>
                         <div class="project-tech">
+                            <span class="tech-tag">Python</span>
                             <span class="tech-tag">BERT</span>
-                            <span class="tech-tag">Transformers</span>
-                            <span class="tech-tag">Apache Kafka</span>
-                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Flask</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card" data-category="ml">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250/7C2D12/ffffff?text=Recommendation+System" alt="Recommendation System">
+                        <img src="https://via.placeholder.com/400x300/f59e0b/ffffff?text=Predictive+Analytics" alt="Predictive Analytics">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" title="View Live">
+                                <a href="#" class="project-link" aria-label="View Project">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
-                                <a href="#" class="project-link" title="View Code">
+                                <a href="#" class="project-link" aria-label="View Code">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <h3>AI Recommendation Engine</h3>
-                        <p>Collaborative filtering system using deep learning for personalized recommendations. Increased user engagement by 35% for e-commerce platform.</p>
+                    <div class="project-content">
+                        <h3 class="project-title">Predictive Analytics Platform</h3>
+                        <p class="project-description">
+                            Machine learning platform for business intelligence and predictive analytics.
+                        </p>
                         <div class="project-tech">
-                            <span class="tech-tag">Neural Networks</span>
-                            <span class="tech-tag">Collaborative Filtering</span>
-                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scikit-learn</span>
                             <span class="tech-tag">FastAPI</span>
                         </div>
                     </div>
@@ -394,52 +413,82 @@
 
                 <div class="project-card" data-category="web">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250/6366F1/ffffff?text=ML+Model+Dashboard" alt="ML Model Dashboard">
+                        <img src="https://via.placeholder.com/400x300/ef4444/ffffff?text=Portfolio+Website" alt="Interactive Portfolio">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" title="View Live">
+                                <a href="#" class="project-link" aria-label="View Project">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
-                                <a href="#" class="project-link" title="View Code">
+                                <a href="#" class="project-link" aria-label="View Code">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <h3>ML Model Dashboard</h3>
-                        <p>Interactive web dashboard for monitoring ML model performance, data drift detection, and A/B testing. Built with modern web technologies.</p>
+                    <div class="project-content">
+                        <h3 class="project-title">Interactive Portfolio</h3>
+                        <p class="project-description">
+                            Modern, responsive portfolio website with GSAP animations and interactive elements.
+                        </p>
                         <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MLflow</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">GSAP</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card" data-category="cv">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250/0891B2/ffffff?text=Medical+Image+Analysis" alt="Medical Image Analysis">
+                        <img src="https://via.placeholder.com/400x300/8b5cf6/ffffff?text=Object+Detection" alt="Real-time Object Detection">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" title="View Live">
+                                <a href="#" class="project-link" aria-label="View Project">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
-                                <a href="#" class="project-link" title="View Code">
+                                <a href="#" class="project-link" aria-label="View Code">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Medical Image Analysis</h3>
-                        <p>CNN-based system for medical image classification and anomaly detection. Assists healthcare professionals with 96% diagnostic accuracy.</p>
+                    <div class="project-content">
+                        <h3 class="project-title">Real-time Object Detection</h3>
+                        <p class="project-description">
+                            YOLO-based real-time object detection system for surveillance and security applications.
+                        </p>
                         <div class="project-tech">
-                            <span class="tech-tag">CNN</span>
-                            <span class="tech-tag">Medical Imaging</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">DICOM</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">YOLO</span>
+                            <span class="tech-tag">OpenCV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="ml">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x300/06b6d4/ffffff?text=Recommendation+Engine" alt="AI Recommendation Engine">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="View Project">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link" aria-label="View Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Recommendation Engine</h3>
+                        <p class="project-description">
+                            Collaborative filtering recommendation system for e-commerce platforms.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">NumPy</span>
                         </div>
                     </div>
                 </div>
@@ -452,76 +501,76 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's work together on your next project</p>
+                <p class="section-subtitle">Let's discuss how we can work together</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Let's Build Something Intelligent Together</h3>
-                    <p>I'm always excited to collaborate on AI/ML projects and explore innovative solutions. Whether you need help with machine learning implementation, data analysis, or building intelligent systems, let's discuss how we can bring your ideas to life!</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <p>ai.engineer@email.com</p>
-                            </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Phone</h4>
-                                <p>+1 (555) 123-4567</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Location</h4>
-                                <p>San Francisco, CA - AI Hub</p>
-                            </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Your City, Your Country</p>
                         </div>
                     </div>
-                    
-                    <div class="social-links">
-                        <a href="#" class="social-link" title="LinkedIn">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>your.email@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="#" class="social-link">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="social-link" title="GitHub">
+                        <a href="#" class="social-link">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="social-link" title="Twitter">
+                        <a href="#" class="social-link">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="social-link" title="Instagram">
+                        <a href="#" class="social-link">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
-                
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form id="contact-form">
                         <div class="form-group">
                             <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <label for="name">Name</label>
                         </div>
                         <div class="form-group">
                             <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <label for="email">Email</label>
                         </div>
                         <div class="form-group">
                             <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                            <label for="subject">Subject</label>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                            <label for="message">Message</label>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loader">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -532,15 +581,13 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2024 AI/ML Engineer Portfolio. All rights reserved.</p>
-                <p>Built with <i class="fas fa-heart"></i>, powered by <i class="fas fa-brain"></i>, and lots of <i class="fas fa-coffee"></i></p>
+                <p>&copy; 2024 Your Name. All rights reserved.</p>
+                <p>Designed with ❤️ using HTML, CSS, JavaScript, GSAP & ScrollMagic</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Custom JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
