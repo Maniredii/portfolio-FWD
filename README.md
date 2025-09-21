@@ -210,4 +210,4 @@ This portfolio template is free to use for personal and commercial projects. Att
 
 **Built with ❤️ using HTML, CSS, JavaScript, GSAP & ScrollMagic**
 
-*Last updated: 2024*
+*Last updated: 2025*

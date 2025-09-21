@@ -332,6 +332,55 @@ function initializeSkillBars() {
     .addTo(controller);
 }
 
+// Initialize skill interactions
+function initializeSkillInteractions() {
+    const skillItems = document.querySelectorAll('.skill-item');
+    
+    skillItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            gsap.to(this, {
+                scale: 1.05,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+            
+            gsap.to(this.querySelector('.skill-icon'), {
+                rotation: 10,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            gsap.to(this, {
+                scale: 1,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+            
+            gsap.to(this.querySelector('.skill-icon'), {
+                rotation: 0,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+        
+        // Add click animation
+        item.addEventListener('click', function() {
+            gsap.fromTo(this.querySelector('.skill-icon'), 
+                { scale: 1 },
+                { 
+                    scale: 1.2,
+                    duration: 0.1,
+                    yoyo: true,
+                    repeat: 1,
+                    ease: "power2.inOut"
+                }
+            );
+        });
+    });
+}
+
 // Project filtering functionality
 function initializeProjectFiltering() {
     const filterBtns = document.querySelectorAll('.filter-btn');
